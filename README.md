@@ -1,70 +1,150 @@
-# learn-i3wm
+<center>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/I3_window_manager_logo.svg/2141px-I3_window_manager_logo.svg.png" width="80px" height="80px">
+  <h2>Belajar Configurasi i3 Window Manager</h2>
+</center>
 
-# File config
-  nano ~/.config/i3/config
-  
-# Menentukan Modifier Key
-  # Mod4 merupakan tombol super atau tombol ini biasa memiliki logo windows
-  set $mod Mod4
-  
-  # Memanggil Terminal
-    bindsym $mod+Return exec --no-startup-id st
-    # Return = enter, st = terminal
+<br>
+
+<a href="https://i3wm.org/docs/userguide.html">visit official i3wm</a>
+
+<br>
+
+<h4>Apa itu i3wm ???</h4>
+```
+    i3 merupakan sebuah manager jendela yang dirancang untuk x11 (sistem grafis pada sistem operasi unix). Untuk window manager sendiri merupakan sebuah sistem yang mengontol juga menampilkan sebuah tab maupun jendela.
     
-  # Launcher Apps
-    bindsym $mod exec --no-startup-id j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 400 -i -sort -p RUN'
+    Kebanyakan user linux tidak asing dengan window manager/manajer jendela yang bernama i3. Karena i3 sangat cocok bagi seorang pemula dengan konfigurasinya yang jauh lebih mudah daripada window manager lainnya.
+```
+<br>
+
+<h4>Lokasi File Config</h4>
+  ```
+    $HOME/.config/i3/config
+  ```
+<br>
+
+<h4>Menentukan Modifier Key</h4>
+  ```
+    Saya sendiri dan mungkin kebanyakan orang juga menggunakan Mod4 atau tombol windows
+    
+      set $mod Mod4
+  ```
   
-  # Window Container
-      # Berpindah fokus (menggunakan arrow keyboard)
-        bindsym $mod+Up focus up
-        bindsym $mod+Down focus down
-        bindsym $mod+Left focus left
-        bindsym $mod+Right focus right
-        
-      # Memindahkan Fokus Container
-        # Versi Lambat
-          bindsym $mod+j move up 1px 
-          bindsym $mod+k move down 1px
-          bindsym $mod+l move left 1px
-          bindsym $mod+; move right 1px
-        # Versi Cepat
-          bindsym $mod+Shift+Up move up 1px 
-          bindsym $mod+Shift+Down move down 1px
-          bindsym $mod+Shift+Left move left 1px
-          bindsym $mod+Shift+Right move right 1px
-          
-      # Mengganti Orientasi Container
-        # Orientasi Bawaan
-          default_orientation vertical
-        # Vertikal
-          bindsym $mod+v split v
-        # Horizontal
-          bindsym $mod+h split h
-          
-      # Fullscreen 
-        bindsym $mod+f fullscreen toogle
-        
-      # Layout Container
-        workspace_layout default
-        
-      # Membuat Container menjadi Tipe Floating
-        bindsym $mod+Shift+space floating toggle border none
-        # Pindah Focus pada Container Floating
-          bindsym $mod+space focus mode_toggle
-      
-      # Parent Container
-        bindsym $mod+a focus parent
-        # Child Focus
-          bindsym $mod+Shift+a focus child
-      
-      # Scratchpad (Solusi jika ingin menggunakan app lain tanpa pindah workspace)
-        # Membuat Container menjadi Scratchpad
-          bindsym $mod+Shift+minus move scratchpad
-        # Menyembunyikan scratchpad
-          bindsym $mod+minus scratchpad show
-          
-      # Sticky Container (Container to Front/Top)
-        bindsym $mod+Shift+plus sticky toggle
+<br>
+
+<h4>Setting Keybinding</h4>
+  <h5>Terminal</h5>
+    ```
+      bindsym $mod+Return exec --no-startup-id st
+      Return: merupakan tombol enter
+    ```
+  <h5>Menutup Aplikasi</h5>
+  ```
+    bindsym $mod+Shift+q kill
+  ```
+  <h5>Launcher Apps (Mencari Aplikasi)</h5>
+    ```
+      bindsym $mod exec --no-startup-id j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 400 -i -sort -p RUN'
+    ```
+   <h5>Window Container</h5>
+    ```
+        1. Berpindah fokus (menggunakan arrow keyboard)
+            bindsym $mod+Up focus up
+            bindsym $mod+Down focus down
+            bindsym $mod+Left focus left
+            bindsym $mod+Right focus right
+        2. Memindahkan Fokus Container
+            a. Versi Lambat
+              bindsym $mod+j move up 1px 
+              bindsym $mod+k move down 1px
+              bindsym $mod+l move left 1px
+              bindsym $mod+; move right 1px
+            b. Versi Cepat
+              bindsym $mod+Shift+Up move up 1px 
+              bindsym $mod+Shift+Down move down 1px
+              bindsym $mod+Shift+Left move left 1px
+              bindsym $mod+Shift+Right move right 1px
+        3. Mengganti Orientasi Container
+            a. Orientasi Bawaan
+              default_orientation vertical
+            b. Vertikal
+              bindsym $mod+v split v
+            c. Horizontal
+              bindsym $mod+h split h
+        4. Fullscreen 
+            bindsym $mod+f fullscreen toogle
+        5. Layout Container
+            workspace_layout default
+        6. Membuat Container menjadi Tipe Floating
+            bindsym $mod+Shift+space floating toggle border none
+        7. Pindah Focus pada Container Floating
+            bindsym $mod+space focus mode_toggle
+        8. Parent Container
+            bindsym $mod+a focus parent
+        9. Child Focus
+            bindsym $mod+Shift+a focus child
+        10. Scratchpad (Solusi jika ingin menggunakan app lain tanpa pindah workspace)
+            a. Membuat Container menjadi Scratchpad
+              bindsym $mod+Shift+minus move scratchpad
+            b. Menyembunyikan scratchpad
+              bindsym $mod+minus scratchpad show 
+        11. Sticky Container (Container to Front/Top)
+            bindsym $mod+Shift+plus sticky toggle
+        12. Binding Mode (Maximize/Minimize)
+            a. Activated Binding Mode
+              bindsym $mod+r mode "resize"
+            b. Mode Normal (tap enter or escape)
+              bindsym Return mode "default"
+              bindsym Escape mode "default"
+            c. Keyboard Shortcut
+              bindsym j resize shrink width  1 px
+              bindsym k resize grow   height 1 px
+              bindsym l resize shrink height 1 px
+              bindsym ; resize grow   width  1 px
+            d. Arrow Keyboard
+              bindsym Left  resize shrink width  1 px or 1 ppt
+              bindsym Down  resize grow   height 1 px or 1 ppt
+              bindsym Up    resize shrink height 1 px or 1 ppt
+              bindsym Right resize grow   width  1 px or 1 ppt
+        13. Container Border
+            a. Keyboard Shortcut
+              bindsym $mod+Shift+t border normal 0
+              bindsym $mod+t       border normal 1
+              bindsym $mod+Shift+y border pixel  1
+              bindsym $mod+y       border none
+       14. Create Empty Container
+            bindsym $mod+o open
+       15. Berpindah Workspace
+            a. Cara 1 
+              bindsym $mod+1 workspace $workspace1
+              bindsym $mod+2 workspace $workspace2
+              bindsym $mod+3 workspace $workspace3
+              bindsym $mod+4 workspace $workspace4
+              bindsym $mod+5 workspace $workspace5
+              bindsym $mod+6 workspace $workspace6
+              bindsym $mod+7 workspace $workspace7
+              bindsym $mod+8 workspace $workspace8
+              bindsym $mod+9 workspace $workspace9
+              bindsym $mod+0 workspace $workspace10
+            b. Cara 2
+              bindsym $mod+Tab exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -show window -lines 10 -width 500 -display-window 'WORKSPACE'"
+        16 Reload
+            bindsym $mod+Shift+c reload
+        17. Restart
+            bindsym $mod+Shift+c reload
+    ```
+
+<br>
+ 
+<h4>Setting Window</h4> 
+  <h5>Container Border</h5>
+    ```
+      new_windows none
+      new_float none
+    ```
+
+<br>
+
         
       # Default Floating Container
         for_window [class="Gkamus"]                           floating enable border normal 1
@@ -78,25 +158,6 @@
         # Default Floating
           for_window [class="pavucontrol-qt"]                    floating disable
           
-      # Menutup / Mengakhiri Window Container (Close)
-        bindsym $mod+Shift+q kill
-        
-      # Binding Mode (Maximize)
-        # Activated Binding Mode
-          bindsym $mod+r mode "resize"
-        # Mode Normal (tap enter or escape)
-          bindsym Return mode "default"
-          bindsym Escape mode "default"
-        # Keyboard Shortcut
-          bindsym j resize shrink width  1 px
-          bindsym k resize grow   height 1 px
-          bindsym l resize shrink height 1 px
-          bindsym ; resize grow   width  1 px
-          # Arrow Keyboard
-            bindsym Left  resize shrink width  1 px or 1 ppt
-            bindsym Down  resize grow   height 1 px or 1 ppt
-            bindsym Up    resize shrink height 1 px or 1 ppt
-            bindsym Right resize grow   width  1 px or 1 ppt
           
       # Window Color
         # Variable
@@ -115,17 +176,6 @@
         client.focused.inactive     $inactive-bg-color    $inactive-bg-color    $inactive-text-color    $indicator
         client.urgent               $urgent-bg-color      $urgent-bg-color      $urgent-text-color      $indicator
         
-      # Container Border
-        new_windows none
-        new_float none
-        # Keyboard Shortcut
-          bindsym $mod+Shift+t border normal 0
-          bindsym $mod+t       border normal 1
-          bindsym $mod+Shift+y border pixel  1
-          bindsym $mod+y       border none
-          
-      # Create Empty Container
-        bindsym $mod+o open
         
 # Workspace
   set $workspace1  "1"
@@ -138,37 +188,6 @@
   set $workspace8  "8"
   set $workspace9  "9"
   set $workspace10 "10"
-  # Keyboard Shorcut
-    bindsym $mod+1 workspace $workspace1
-    bindsym $mod+2 workspace $workspace2
-    bindsym $mod+3 workspace $workspace3
-    bindsym $mod+4 workspace $workspace4
-    bindsym $mod+5 workspace $workspace5
-    bindsym $mod+6 workspace $workspace6
-    bindsym $mod+7 workspace $workspace7
-    bindsym $mod+8 workspace $workspace8
-    bindsym $mod+9 workspace $workspace9
-    bindsym $mod+0 workspace $workspace10
-    # Berpindah Workspace lebih mudah
-       bindsym $mod+Tab exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -show window -lines 10 -width 500 -display-window 'WORKSPACE'"
-          
-    # Memindahkan Container ke Workspace lain
-      bindsym $mod+Shift+1 move container to workspace $workspace1
-      bindsym $mod+Shift+2 move container to workspace $workspace2
-      bindsym $mod+Shift+3 move container to workspace $workspace3
-      bindsym $mod+Shift+4 move container to workspace $workspace4
-      bindsym $mod+Shift+5 move container to workspace $workspace5
-      bindsym $mod+Shift+6 move container to workspace $workspace6
-      bindsym $mod+Shift+7 move container to workspace $workspace7
-      bindsym $mod+Shift+8 move container to workspace $workspace8
-      bindsym $mod+Shift+9 move container to workspace $workspace9
-      bindsym $mod+Shift+0 move container to workspace $workspace10
-      
-    # Reload
-      bindsym $mod+Shift+c reload
-      
-    # Restart
-      bindsym $mod+Shift+c reload
         
 # Gaps Container
   gaps inner 0
