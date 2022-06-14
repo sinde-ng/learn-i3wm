@@ -10,10 +10,10 @@
 <br>
 
 <h4>Apa itu i3wm ???</h4>
-```
+`
     i3 merupakan sebuah manager jendela yang dirancang untuk x11 (sistem grafis pada sistem operasi unix). Untuk window manager sendiri merupakan sebuah sistem yang mengontol juga menampilkan sebuah tab maupun jendela.
     Kebanyakan user linux tidak asing dengan window manager/manajer jendela yang bernama i3. Karena i3 sangat cocok bagi seorang pemula dengan konfigurasinya yang jauh lebih mudah daripada window manager lainnya.
-```
+`
 <br>
 
 <h4>Lokasi File Config</h4>
